@@ -1,25 +1,50 @@
 import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
+//State
+/*
 function App() {
+  const [age,setAge]=useState(0);     //thiết lập giá trị cho state:age
+  const onIncreaseAge=()=>
+  {
+      setAge(age+1);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <div>{age}</div>
+      <div onClick={onIncreaseAge}>Tăng lên 1</div>
     </div>
   );
 }
+*/
+//Props
+const Component=(props)=>
+{
+  return (
+    <div>
+    <div>Đây là tuổi:{props.age}</div>
+    <div>Đây là tên:{props.displayName}</div>
+    </div>
+  );
+}
+function App()
+{
+  const [name,setName]=useState('Cee');  //Định dạng của HookState
+  const [age,setAge]=useState(0);
+
+  const stateAge=()=>
+  {
+    setAge(age+1);
+  }
+    return (
+          <div className='container'>
+            <div>{age}</div>
+            <div onClick={stateAge}>Tăng lên 1</div>  {/*State*/}
+            <Component age={age} displayName={name}/>   {/*Props*/}
+          </div>
+    );
+}
+
 
 export default App;
